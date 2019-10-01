@@ -42,24 +42,6 @@ public class Card {
     }
 
     /**
-     * Returns the Crazy8s point value for this card.
-     *
-     * @return An integer representing this card's point value
-     */
-    public int getPointValue() {
-        // Face cards return 10 pts
-        if (rank.ordinal() >= Rank.JACK.ordinal()) {
-            return 10;
-        }
-        if (rank == Rank.EIGHT) {
-            return 50;
-        }
-
-        // Otherwise, return numeric value of card
-        return rank.ordinal() + 1;
-    }
-
-    /**
      * Returns a list of the standard 52 cards in an unshuffled card deck.
      *
      * @return A list representing a standard deck
