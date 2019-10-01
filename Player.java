@@ -9,7 +9,6 @@ public class Player implements PlayerStrategy {
      * Class variables.
      */
     private int score;
-    private boolean isReported = false;
     private int playerId;
     private List<Card> hand;
     private List<Integer> opponentIds;
@@ -25,14 +24,6 @@ public class Player implements PlayerStrategy {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public boolean isReported() {
-        return isReported;
-    }
-
-    public void setReported(boolean reported) {
-        isReported = reported;
     }
 
     public int getPlayerId() {
