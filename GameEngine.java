@@ -9,8 +9,8 @@ public class GameEngine {
     /**
      * Constants in the game engine.
      */
-    private static final int MINIMUM_PLAYERS = 2;
-    private static final int MAXIMUM_PLAYERS = 9;
+    private static final int MINIMUM_PLAYERS = 3;
+    private static final int MAXIMUM_PLAYERS = 6;
     private static final int STARTING_HAND_CARDS_NUMBER = 5;
 
     /**
@@ -40,7 +40,7 @@ public class GameEngine {
     public void playGame() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome to Crazy 8's! How many bots would you like to play against? " + 
-                            "You can play against one bot, or against up to 5: ");
+                            "You can play against 2 bots, or against up to 5: ");
         numberOfPlayers = scanner.nextInt() + 1;
         while (numberOfPlayers < MINIMUM_PLAYERS || numberOfPlayers > MAXIMUM_PLAYERS) {
             //If the given number of players is invalid, the game cannot be played.
@@ -81,7 +81,7 @@ public class GameEngine {
             System.out.println("\nThe card on top of the discard pile is a " + discardPile.peek().getRank() + 
                                     " of " + discardPile.peek().getSuit() + " and the declared suit to match is " + currentSuit);
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 System.out.print("");
             }
@@ -98,7 +98,7 @@ public class GameEngine {
             }
         }
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             System.out.print("");
         }
@@ -121,7 +121,7 @@ public class GameEngine {
             player.receiveCard(drawPile.pop());
             System.out.println("Player " + player.getPlayerId() + " has drawn a card.");
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 System.out.print("");
             }
@@ -136,7 +136,7 @@ public class GameEngine {
             System.out.println("Player " + player.getPlayerId() + " has played a " + playedCard.getRank() + " of " + playedCard.getSuit());
             currentSuit = playedCard.getSuit();
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 System.out.print("");
             }
@@ -166,7 +166,7 @@ public class GameEngine {
         }
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1500);
         } catch (InterruptedException e) {
             System.out.print("");
         }
@@ -174,7 +174,7 @@ public class GameEngine {
         List<Card> playableCards = new ArrayList<>();
         System.out.println("\nThe cards that you can play are: ");
         for (Card card : player.getHand()) {
-            if (card.getRank() == discardPile.peek().getRank() || card.getSuit() == discardPile.peek().getSuit()
+            if (card.getRank() == discardPile.peek().getRank() || card.getSuit() == currentSuit
                 || card.getRank() == Card.Rank.EIGHT) {
                 playableCards.add(card);
                 System.out.println(card.getRank() + " of " + card.getSuit());
@@ -188,7 +188,7 @@ public class GameEngine {
             player.receiveCard(drawPile.pop());
             System.out.println("\nThe card that you've drawn is a " + drawnCard.getRank() + " of " + drawnCard.getSuit());
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1500);
             } catch (InterruptedException e) {
                 System.out.print("");
             }
